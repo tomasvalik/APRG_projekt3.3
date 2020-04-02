@@ -1,0 +1,5 @@
+basic plan
+
+-najít knihovnu a tu naimportovat
+-vymyslet jak rozložit zadaná slova a vyjádøit je èíslem, které pak porovnáme se slovy v knihovnì
+-nastavíme odchylku, se kterou to bude slovo vnímat jako chybu, aby se nenabízely kraviny
