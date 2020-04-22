@@ -5,6 +5,7 @@ def sorting_function(neroztrideny_seznam_slov):
 
 
 def main():
+    zadane_slovo = input("Zadejte slovo: ")
     with open("words_alpha.txt", encoding='utf-8') as file_name:
         words_dictionary = file_name.read()
     
