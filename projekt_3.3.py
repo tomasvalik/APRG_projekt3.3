@@ -61,7 +61,6 @@ def divide_delete_function(slovo, knihovna, kam):
     return kam
 
 
-
 def dividing_function(slovo, knihovna, kam):
     index = 1
     while (index) < len(slovo):
@@ -138,6 +137,7 @@ def without_one_letter(slovo, knihovna, kam):
             w = porovnani(v, knihovna)
             pridani_do_seznamu(w, kam)
     return kam
+
 
 def main():
     zadane_slovo = input("Napište anglické slovo: ")
