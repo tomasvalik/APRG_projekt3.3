@@ -2,12 +2,12 @@ def stringtolist():
 ##udělá ze zadané věty seznam, každé slovo je zároveň v seznamu
 
     input_task = input("Zadejte větu: ")
-
     input_list = []
+    
     slice = input_task.split(" ")
 
     for word in slice:
-        input_list.append([word])
+        input_list.append(word)
 
     return input_list
 
@@ -46,34 +46,31 @@ def difference(correct, guess):
             distance[row][collumn] = min(distance[row - 1][collumn] + 1,                ##chybějící písmeno
                                          distance[row][collumn - 1] + 1,                ##navíc písmeno
                                          distance[row - 1][collumn - 1] + cost)         ##nahrazené písmeno
-    #for r in range(rows):
-            #print(distance[r])
+   
 
     return distance[row][collumn]
 
 
 def sort():
+##mělo by roztřídit slova knihovny podle levenshteinovy vzdálenosti, pokud je stejné, tj == 0, tak vyhledávání
+##přeskočí, pokud je vyšší než 2, tak ho taky přeskočí
+##má dlouhou výpočetní dobu a vyhodí to zpravidla krátká slovas podobnými písmeny
+   
     words_list = makelist()
     input_list = stringtolist()
 
+    similar = []
 
-    index_list = 0
-    index_word = 0
-
-    while index_list <= len(input_list):
-        while index_word <= len(words_list):
-            if difference(words_list[index_word], input_list[index_list]) == 0:
-                break
-            elif difference(words_list[index_word], input_list[index_list]) <= 2:
+    for list in input_list:
+        for word in words_list:
+            if difference(word, list) > 1:
+                continue
+            elif difference(word, list) == 0:
                 break
             else:
-                print(difference(words_list[index_word], input_list[index_list]))
+                print("Nechtěli jste napsat: ", similar)
 
-            index_word += 1
-
-    index_list += 1
-
-
+            
 def main():
     sort()
 
