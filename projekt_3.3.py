@@ -1,7 +1,17 @@
+alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
 
 from math import floor, ceil
 ##floor - zaokrouhleni dolu
 ##ceil - zaokrouhleni nahoru
+
+
+def makelist():
+    words = open("words_alpha.txt", "r")
+    words_list = []
+    for word in words:
+        words_list.append(word[:-2:])
+    return words_list
 
 
 def sorting_function(neroztrideny_seznam_slov):
@@ -27,11 +37,131 @@ def porovnani(slovo, seznam_slov):
                 return vys
 
 
+def pridani_do_seznamu(co, kam):
+    if co != None:
+        if co != []:
+            if co not in kam:
+                kam.append(co)
+
+
+def divide_delete_function(slovo, knihovna, kam):
+    vysledek_divide_delete_function = []
+    index = 1
+    while (index) < len(slovo):
+        a = list(slovo)[:index]
+        b = list(slovo)[index+1:]
+        c = ""
+        d = ""
+        for k in a:
+            c = c + k
+        for l in b:
+            d = d + l
+        if (porovnani(c, knihovna) == c) and (porovnani(d, knihovna) == d):
+            vysledek_divide_delete_function.append(c + " " + d)
+        index = index + 1
+    return vysledek_divide_delete_function
+
+
+
+def dividing_function(slovo, knihovna, kam):
+    vysledek_dividing_function = []
+    index = 1
+    while (index) < len(slovo):
+        a = list(slovo)[:index]
+        b = list(slovo)[index:]
+        c = ""
+        d = ""
+        for k in a:
+            c = c + k
+        for l in b:
+            d = d + l
+        if (porovnani(c, knihovna) == c) and (porovnani(d, knihovna) == d):
+            vysledek_dividing_function.append(c + " " + d)
+        index = index + 1
+    return vysledek_dividing_function
+
+
+def one_letter_more(slovo, knihovna, kam):
+    vysledek_one_letter_more = []
+    u = 0
+    while u < len(slovo):
+        t = list(slovo)
+        o = t.pop(u)
+        u = u + 1
+        v = ""
+        for k in t:
+            v = v + k
+        w = porovnani(v, knihovna)
+        pridani_do_seznamu(w, kam)
+    return kam
+
+
+def one_letter_wrong(slovo, abeceda, knihovna, kam):
+    vysledek_one_letter_wrong = []
+    index = 0
+    while index < len(slovo):
+        t = list(slovo)
+        t.pop(index)
+        for k in alphabet:
+            t.insert(index, k)
+            s = ""
+            for l in t:
+                s = s + l
+            w = porovnani(s, knihovna)
+            pridani_do_seznamu(w, kam)
+            t.pop(index)
+        index = index + 1
+    return kam
+
+
+def two_letter_change(slovo, knihovna, kam):
+    vysledek_two_letter_change = []
+    index = 0
+    while (index + 1) < len(slovo):
+        t = list(slovo)
+        u = t.pop(index)
+        t.insert(index + 1, u)
+        v = ""
+        for k in t:
+            v = v + k
+        w = porovnani(v, knihovna)
+        pridani_do_seznamu(w, kam)
+        index = index + 1
+    return kam
+
+
+def without_one_letter(slovo, knihovna, kam):
+    vysledek_without_one_letter = []
+    for k in alphabet:
+        y = 0
+        while y < len(slovo):
+            r = list(slovo)
+            r.insert(y, k)
+            y = y + 1
+            v = ""
+            for l in r:
+                v = v + l
+            w = porovnani(v, knihovna)
+            pridani_do_seznamu(w, kam)
+    return kam
+
 def main():
-    zadane_slovo = input("Zadejte slovo: ")
-    with open("words_alpha.txt", encoding='utf-8') as file_name:
-        words_dictionary = file_name.read()
-    
+    zadane_slovo = input("Napište anglické slovo: ")
+    knihovna = makelist()
+    vysledek = []
+    a = sorting_function(knihovna)
+    porovnani(zadane_slovo, a)
+    if vysledek == []:
+        print("I ty jeden! Takove slovo neexistuje!")
+    divide_delete_function(zadane_slovo, a, vysledek)
+    dividing_function(zadane_slovo, a, vysledek)
+    one_letter_more(zadane_slovo, a, vysledek)
+    one_letter_wrong(zadane_slovo, alphabet, a, vysledek)
+    two_letter_change(zadane_slovo, a, vysledek)
+    without_one_letter(zadane_slovo, a, vysledek)
+    if vysledek != []:
+        print("Měl jsi na mysli: ", vysledek)
+
 
 if __name__ == "__main__":
     main()
