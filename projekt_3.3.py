@@ -79,11 +79,11 @@ def dividing_function(slovo, knihovna, kam):
 
 
 def one_letter_more(slovo, knihovna, kam):
-    u = 0
-    while u < len(slovo):
+    index = 0
+    while index < len(slovo):
         t = list(slovo)
-        o = t.pop(u)
-        u = u + 1
+        t.pop(index)
+        index = index + 1
         v = ""
         for k in t:
             v = v + k
@@ -99,10 +99,10 @@ def one_letter_wrong(slovo, abeceda, knihovna, kam):
         t.pop(index)
         for k in abeceda:
             t.insert(index, k)
-            s = ""
+            v = ""
             for l in t:
-                s = s + l
-            w = porovnani(s, knihovna)
+                v = v + l
+            w = porovnani(v, knihovna)
             pridani_do_seznamu(w, kam)
             t.pop(index)
         index = index + 1
@@ -126,13 +126,13 @@ def two_letter_change(slovo, knihovna, kam):
 
 def without_one_letter(slovo, knihovna, kam):
     for k in alphabet:
-        y = 0
-        while y < len(slovo):
-            r = list(slovo)
-            r.insert(y, k)
-            y = y + 1
+        index = 0
+        while index < len(slovo):
+            t = list(slovo)
+            t.insert(index, k)
+            index = index + 1
             v = ""
-            for l in r:
+            for l in t:
                 v = v + l
             w = porovnani(v, knihovna)
             pridani_do_seznamu(w, kam)
