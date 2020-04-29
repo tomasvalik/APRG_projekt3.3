@@ -45,7 +45,6 @@ def pridani_do_seznamu(co, kam):
 
 
 def divide_delete_function(slovo, knihovna, kam):
-    vysledek_divide_delete_function = []
     index = 1
     while (index) < len(slovo):
         a = list(slovo)[:index]
@@ -57,14 +56,13 @@ def divide_delete_function(slovo, knihovna, kam):
         for l in b:
             d = d + l
         if (porovnani(c, knihovna) == c) and (porovnani(d, knihovna) == d):
-            vysledek_divide_delete_function.append(c + " " + d)
+            kam.append(c + " " + d)
         index = index + 1
-    return vysledek_divide_delete_function
+    return kam
 
 
 
 def dividing_function(slovo, knihovna, kam):
-    vysledek_dividing_function = []
     index = 1
     while (index) < len(slovo):
         a = list(slovo)[:index]
@@ -76,13 +74,12 @@ def dividing_function(slovo, knihovna, kam):
         for l in b:
             d = d + l
         if (porovnani(c, knihovna) == c) and (porovnani(d, knihovna) == d):
-            vysledek_dividing_function.append(c + " " + d)
+            kam.append(c + " " + d)
         index = index + 1
-    return vysledek_dividing_function
+    return kam
 
 
 def one_letter_more(slovo, knihovna, kam):
-    vysledek_one_letter_more = []
     u = 0
     while u < len(slovo):
         t = list(slovo)
@@ -97,12 +94,11 @@ def one_letter_more(slovo, knihovna, kam):
 
 
 def one_letter_wrong(slovo, abeceda, knihovna, kam):
-    vysledek_one_letter_wrong = []
     index = 0
     while index < len(slovo):
         t = list(slovo)
         t.pop(index)
-        for k in alphabet:
+        for k in abeceda:
             t.insert(index, k)
             s = ""
             for l in t:
@@ -115,7 +111,6 @@ def one_letter_wrong(slovo, abeceda, knihovna, kam):
 
 
 def two_letter_change(slovo, knihovna, kam):
-    vysledek_two_letter_change = []
     index = 0
     while (index + 1) < len(slovo):
         t = list(slovo)
@@ -131,7 +126,6 @@ def two_letter_change(slovo, knihovna, kam):
 
 
 def without_one_letter(slovo, knihovna, kam):
-    vysledek_without_one_letter = []
     for k in alphabet:
         y = 0
         while y < len(slovo):
