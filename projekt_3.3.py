@@ -10,7 +10,7 @@ def makelist():
     words = open("words_alpha.txt", "r")
     words_list = []
     for word in words:
-        words_list.append(word[:-2:])
+        words_list.append(word[:-1:])
     return words_list
 
 
