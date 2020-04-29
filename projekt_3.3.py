@@ -144,7 +144,7 @@ def main():
     knihovna = makelist()
     vysledek = []
     a = sorting_function(knihovna)
-    porovnani(zadane_slovo, a)
+    pridani_do_seznamu(porovnani(zadane_slovo, a), vysledek)
     if vysledek == []:
         print("I ty jeden! Takove slovo neexistuje!")
     divide_delete_function(zadane_slovo, a, vysledek)
