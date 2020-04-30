@@ -158,6 +158,12 @@ def without_one_letter(slovo, abeceda, knihovna, kam):
             pridani_do_seznamu(w, kam)
     return kam
 
+def choose(list)
+    input_index = int(input("Zadejte pořadí slova, které byste chtěli využít: "))
+    vyber = list[input_index - 1]
+    
+    return vyber
+
 
 def main():
     zadany_text = input("Napište anglický text: ")
@@ -182,7 +188,7 @@ def main():
         without_one_letter(zadane_slovo, alphabet, a, vysledek)
         if vysledek != []:
             print("Měl jsi na mysli: ", vysledek)
-
+        print(choose(vysledek)
 
 if __name__ == "__main__":
     main()
