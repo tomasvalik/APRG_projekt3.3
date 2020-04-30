@@ -67,11 +67,9 @@ def sort():
 
     for list in input_list:
         for word in words_list:
-            if difference(word, list) > 1:
-                continue
-            elif difference(word, list) == 0:
+            if difference(word, list) == 0:
                 break
-            else:
+            elif difference(word, list) in [1, 2]:
                 similar.append(word)
                
         print("Nechtěli jste napsat: ", similar)
