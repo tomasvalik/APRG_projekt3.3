@@ -158,7 +158,7 @@ def without_one_letter(slovo, abeceda, knihovna, kam):
             pridani_do_seznamu(w, kam)
     return kam
 
-def choose(list)
+def choose(list):
     input_index = int(input("Zadejte pořadí slova, které byste chtěli využít: "))
     vyber = list[input_index - 1]
     
