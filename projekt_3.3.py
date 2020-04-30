@@ -57,6 +57,24 @@ def porovnani(slovo, seznam_slov):
                 return vys
 
 
+def choose(list):
+    input_index = int(input("Zadejte pořadí slova, které byste chtěli využít: "))
+    vyber = list[input_index - 1]
+    return vyber
+
+
+def two_lists_to_sentence(list_one, list_two):
+    sentence = ""
+    index = 0
+    while index < (len(list_one) or len(list_two)):
+        if index < len(list_one):
+            sentence = sentence + list_one[index]
+        if index < len(list_two):
+            sentence = sentence + list_two[index]
+        index = index + 1
+    return sentence
+
+
 def pridani_do_seznamu(co, kam):
     if co != None:
         if co != []:
@@ -158,12 +176,6 @@ def without_one_letter(slovo, abeceda, knihovna, kam):
             pridani_do_seznamu(w, kam)
     return kam
 
-def choose(list):
-    input_index = int(input("Zadejte pořadí slova, které byste chtěli využít: "))
-    vyber = list[input_index - 1]
-    
-    return vyber
-
 
 def main():
     zadany_text = input("Napište anglický text: ")
@@ -171,10 +183,8 @@ def main():
     qwer = sentence_to_words(zadany_text, alphabet)
     zadana_slova = qwer[0]
     zadane_znaky = qwer[1]
-    print(zadana_slova)
-    print(zadane_znaky)
+    vybrana_slova = []
     for zadane_slovo in zadana_slova:
-        print(zadane_slovo)
         vysledek = []
         a = sorting_function(knihovna)
         pridani_do_seznamu(porovnani(zadane_slovo, a), vysledek)
@@ -187,8 +197,16 @@ def main():
         two_letter_change(zadane_slovo, a, vysledek)
         without_one_letter(zadane_slovo, alphabet, a, vysledek)
         if vysledek != []:
-            print("Měl jsi na mysli: ", vysledek)
-        print(choose(vysledek)
+            index = 0
+            vysledek_int = []
+            while index < len (vysledek):
+                vysledek_int.append([str(index + 1) + "." + str(vysledek[index])])
+                index = index + 1
+            print("Měl jsi na mysli: ", vysledek_int)
+        vybrana_slova.append(choose(vysledek))
+    novy_text = two_lists_to_sentence(vybrana_slova, zadane_znaky)
+    print(novy_text)
+
 
 if __name__ == "__main__":
     main()
