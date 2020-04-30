@@ -5,8 +5,12 @@ def stringtolist():
     input_list = []
     
     slice = input_task.split(" ")
-
+    chars = [",", ".", "-", "/", "?", "!"]
+    
     for word in slice:
+        if word[-1] in chars:
+            word = word[:-1]
+        
         input_list.append(word)
 
     return input_list
