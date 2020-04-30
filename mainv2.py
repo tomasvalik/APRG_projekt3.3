@@ -72,7 +72,9 @@ def sort():
             elif difference(word, list) == 0:
                 break
             else:
-                print("Nechtěli jste napsat: ", similar)
+                similar.append(word)
+               
+        print("Nechtěli jste napsat: ", similar)
 
             
 def main():
