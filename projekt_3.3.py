@@ -7,7 +7,7 @@ def sentence_to_words(sentence, abeceda):
     znak = ""
     slova = []
     jine_znaky = []
-    sentence = sentence + "."
+    sentence = sentence
     for k in sentence:
         if k in abeceda[0]:
             slovo = slovo + k
@@ -24,6 +24,7 @@ def sentence_to_words(sentence, abeceda):
             if slovo != "":
                 slova.append(slovo)
                 slovo = ""
+    jine_znaky.append(znak)
     return [slova, jine_znaky]
 
 
