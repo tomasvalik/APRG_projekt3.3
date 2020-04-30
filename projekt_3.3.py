@@ -4,16 +4,23 @@ alphabet = [["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n
 
 def sentence_to_words(sentence, abeceda):
     slovo = ""
+    znak = ""
     slova = []
     jine_znaky = []
     sentence = sentence + "."
     for k in sentence:
         if k in abeceda[0]:
             slovo = slovo + k
+            if znak != "":
+                jine_znaky.append(znak)
+                znak = ""
         elif k in abeceda[1]:
             slovo = slovo + k
+            if znak != "":
+                jine_znaky.append(znak)
+                znak = ""
         else:
-            jine_znaky.append(k)
+            znak = znak + k
             if slovo != "":
                 slova.append(slovo)
                 slovo = ""
