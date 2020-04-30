@@ -7,7 +7,7 @@ def sentence_to_words(sentence, abeceda):
     znak = ""
     slova = []
     jine_znaky = []
-    sentence = sentence
+    sentence = sentence + "."
     for k in sentence:
         if k in abeceda[0]:
             slovo = slovo + k
@@ -24,7 +24,8 @@ def sentence_to_words(sentence, abeceda):
             if slovo != "":
                 slova.append(slovo)
                 slovo = ""
-    jine_znaky.append(znak)
+    posledni_znak = znak[:-1]
+    jine_znaky.append(posledni_znak)
     return [slova, jine_znaky]
 
 
@@ -197,7 +198,7 @@ def main():
         a = sorting_function(knihovna)
         pridani_do_seznamu(porovnani(zadane_slovo, a), vysledek)
         if vysledek == []:
-            print("I ty jeden! Takove slovo neexistuje!")
+            print("I ty jeden! Slovo", zadane_slovo, "neexistuje!")
         divide_delete_function(zadane_slovo, a, vysledek)
         dividing_function(zadane_slovo, a, vysledek)
         one_letter_more(zadane_slovo, a, vysledek)
