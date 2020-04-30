@@ -124,8 +124,8 @@ def two_letter_change(slovo, knihovna, kam):
     return kam
 
 
-def without_one_letter(slovo, knihovna, kam):
-    for k in alphabet:
+def without_one_letter(slovo, abeceda, knihovna, kam):
+    for k in abeceda:
         index = 0
         while index < len(slovo):
             t = list(slovo)
@@ -152,7 +152,7 @@ def main():
     one_letter_more(zadane_slovo, a, vysledek)
     one_letter_wrong(zadane_slovo, alphabet, a, vysledek)
     two_letter_change(zadane_slovo, a, vysledek)
-    without_one_letter(zadane_slovo, a, vysledek)
+    without_one_letter(zadane_slovo, alphabet, a, vysledek)
     if vysledek != []:
         print("Měl jsi na mysli: ", vysledek)
 
