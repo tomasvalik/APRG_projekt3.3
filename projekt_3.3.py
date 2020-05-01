@@ -38,7 +38,7 @@ def makelist():
     words = open("words_alpha.txt", "r")
     words_list = []
     for word in words:
-        words_list.append(word[:-2:])
+        words_list.append(word[:-1:])
     return words_list
 
 
@@ -53,6 +53,8 @@ def porovnani(slovo, seznam_slov):
     elif len(seznam_slov) == 1:
         if male_slovo == seznam_slov[0]:
             return slovo
+        else:
+            return []
     elif len(seznam_slov) > 1:
         if male_slovo == seznam_slov[(floor((len(seznam_slov))/2))]:
             return slovo
@@ -85,10 +87,9 @@ def two_lists_to_sentence(list_one, list_two):
 
 
 def pridani_do_seznamu(co, kam):
-    if co != None:
-        if co != []:
-            if co not in kam:
-                kam.append(co)
+    if co != []:
+        if co not in kam:
+            kam.append(co)
 
 
 def divide_delete_function(slovo, knihovna, kam):
