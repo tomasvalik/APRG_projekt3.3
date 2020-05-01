@@ -95,7 +95,7 @@ def divide_delete_function(slovo, knihovna, kam):
     index = 1
     while (index) < len(slovo):
         a = list(slovo)[:index]
-        b = list(slovo)[index+1:]
+        b = list(slovo)[index + 1 :]
         c = ""
         d = ""
         for k in a:
@@ -193,9 +193,9 @@ def main():
     zadana_slova = qwer[0]
     zadane_znaky = qwer[1]
     vybrana_slova = []
+    a = sorting_function(knihovna)
     for zadane_slovo in zadana_slova:
         vysledek = []
-        a = sorting_function(knihovna)
         pridani_do_seznamu(porovnani(zadane_slovo, a), vysledek)
         if vysledek == []:
             print("I ty jeden! Slovo", zadane_slovo, "neexistuje!")
