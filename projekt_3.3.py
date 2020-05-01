@@ -185,26 +185,19 @@ def without_one_letter(slovo, abeceda, knihovna, kam):
             pridani_do_seznamu(w, kam)
     return kam
 
-
-def main():
-    zadany_text = input("Napište anglický text: ")
-    knihovna = makelist()
-    qwer = sentence_to_words(zadany_text, alphabet)
-    zadana_slova = qwer[0]
-    zadane_znaky = qwer[1]
+def vyber_slov(seznam_slov, knihovna, abeceda):
     vybrana_slova = []
-    a = sorting_function(knihovna)
-    for zadane_slovo in zadana_slova:
+    for zadane_slovo in seznam_slov:
         vysledek = []
-        pridani_do_seznamu(porovnani(zadane_slovo, a), vysledek)
+        pridani_do_seznamu(porovnani(zadane_slovo, knihovna), vysledek)
         if vysledek == []:
             print("I ty jeden! Slovo", zadane_slovo, "neexistuje!")
-        divide_delete_function(zadane_slovo, a, vysledek)
-        dividing_function(zadane_slovo, a, vysledek)
-        one_letter_more(zadane_slovo, a, vysledek)
-        one_letter_wrong(zadane_slovo, alphabet, a, vysledek)
-        two_letter_change(zadane_slovo, a, vysledek)
-        without_one_letter(zadane_slovo, alphabet, a, vysledek)
+        divide_delete_function(zadane_slovo, knihovna, vysledek)
+        dividing_function(zadane_slovo, knihovna, vysledek)
+        one_letter_more(zadane_slovo, knihovna, vysledek)
+        one_letter_wrong(zadane_slovo, abeceda, knihovna, vysledek)
+        two_letter_change(zadane_slovo, knihovna, vysledek)
+        without_one_letter(zadane_slovo, abeceda, knihovna, vysledek)
         if vysledek != []:
             index = 0
             vysledek_int = []
@@ -213,7 +206,18 @@ def main():
                 index = index + 1
             print("Měl jsi na mysli: ", vysledek_int)
         vybrana_slova.append(choose(vysledek))
-    novy_text = two_lists_to_sentence(vybrana_slova, zadane_znaky)
+    return vybrana_slova
+
+
+def main():
+    zadany_text = input("Napište anglický text: ")
+    knihovna = makelist()
+    qwer = sentence_to_words(zadany_text, alphabet)
+    zadana_slova = qwer[0]
+    zadane_znaky = qwer[1]
+    a = sorting_function(knihovna)
+    zvolena_slova = vyber_slov(zadana_slova, a, alphabet)
+    novy_text = two_lists_to_sentence(zvolena_slova, zadane_znaky)
     print(novy_text)
 
 
